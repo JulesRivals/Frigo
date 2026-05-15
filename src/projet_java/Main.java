@@ -8,7 +8,7 @@ public class Main {
 
 			public static void main(String[] args) {
 				// TODO Auto-generated method stub
-							    String url = "jdbc:sqlite:C:\\cours CPI1\\Projet Java\\BDD_pj_java.db.db"; // Fichier de base de données local
+							    String url = "jdbc:sqlite:BDD_pj_javadb"; // Fichier de base de données local
 							    Scanner sc = new Scanner(System.in);
 
 						        try {
@@ -19,7 +19,7 @@ public class Main {
 						            int v1 = 3; 
 						            int v2 = 0;
 						            
-						            String sql2 = "SELECT id_ingredient, nom FROM ingredient where id_ingredient <= ? and id_ingredient > ?";
+						            String sql2 = "SELECT id_ingredient, nom FROM ingredients where id_ingredient <= ? and id_ingredient > ?";
 						            
 						            while(v1 <= 13) {
 						                PreparedStatement pst2 = conn.prepareStatement(sql2);
@@ -35,6 +35,7 @@ public class Main {
 					                    v2 += 3;
 					                    System.out.println();
 						            }
+						            
 					                
 						            
 						            // ── Demander combien d'aliments (entre 1 et 5) ─────────────────
