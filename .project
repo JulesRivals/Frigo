@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>BDD_pj_java.db.db</name>
-			<type>1</type>
-			<location>C:/cours CPI1/Projet Java/BDD_pj_java.db.db</location>
-		</link>
-	</linkedResources>
 </projectDescription>
