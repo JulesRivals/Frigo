@@ -9,7 +9,7 @@ public class Main {
 
 			public static void main(String[] args) {
 				// TODO Auto-generated method stub
-							    String url = "jdbc:sqlite:C:\\cours CPI1\\Projet Java\\BDD_pj_java.db.db"; // Fichier de base de données local
+							    String url = "jdbc:sqlite:BDD_pj_java.db.db"; // Fichier de base de données local
 							    Scanner sc = new Scanner(System.in);
 
 							    try {
@@ -32,7 +32,7 @@ public class Main {
 						            String sql2 = "SELECT id_ingredient, nom FROM ingredient " +
 						                          "WHERE id_ingredient <= ? AND id_ingredient > ?";
 
-						            while (v1 <= 50) {
+						            while (v1 <= 51) {
 
 						                PreparedStatement pst2 = conn.prepareStatement(sql2);
 						                pst2.setInt(1, v1);
