@@ -32,7 +32,7 @@ public class Main {
 						            String sql2 = "SELECT id_ingredient, nom FROM ingredient " +
 						                          "WHERE id_ingredient <= ? AND id_ingredient > ?";
 
-						            while (v1 <= 51) {
+						            while (v1 <= 52) {
 
 						                PreparedStatement pst2 = conn.prepareStatement(sql2);
 						                pst2.setInt(1, v1);
@@ -108,7 +108,7 @@ public class Main {
 
 						            // seuil : au moins la moitié des ingrédients doit correspondre
 						            // ex : 3 ingrédients -> seuil 2 | 5 ingrédients -> seuil 3
-						            int seuilMinimum = (int) Math.ceil(nb_aliment / 2.0);
+						            int seuilMinimum = (int) Math.ceil(nb_aliment / 3.0);
 
 						            System.out.println("\n🔍 Recherche des recettes contenant au moins "
 						                + seuilMinimum + "/" + nb_aliment + " de vos ingrédients...\n");
