@@ -71,7 +71,7 @@ public class Main {
 
 						            //   SAISIE DES INGRÉDIENTS PAR L'UTILISATEUR
 						            
-						            ArrayList<Integer> diff_ingre = new ArrayList<>();
+						            ArrayList<Ingredient> diff_ingre = new ArrayList<>();
 						            String sql1 = "SELECT nom FROM ingredient WHERE id_ingredient = ?";
 
 						            for (int x = 0; x < nb_aliment; x++) {
@@ -93,8 +93,9 @@ public class Main {
 
 						                try (ResultSet rs1 = pst1.executeQuery()) {
 						                    if (rs1.next()) {
-						                        System.out.println("  ✔ " + rs1.getString("nom") + " ajouté !");
-						                        diff_ingre.add(id_aliment); // on ajoute uniquement si l'id existe
+						                    	Ingredient ingredient = new Ingredient(id_aliment ,rs1.getString("nom"));
+						                        System.out.println("  ✔ " + ingredient.getNom() + " ajouté !");
+						                        diff_ingre.add(ingredient); // on ajoute uniquement si l'id existe
 						                    } else {
 						                        System.out.println("  ✘ Aucun ingrédient trouvé avec ce numéro, réessayez.");
 						                        x--; // ne pas compter ce tour
@@ -135,7 +136,7 @@ public class Main {
 
 						            // injection des ids des ingrédients choisis
 						            for (int i = 0; i < nb_aliment; i++) {
-						                pstRecette.setInt(i + 1, diff_ingre.get(i));
+						                pstRecette.setInt(i + 1, diff_ingre.get(i).getId());
 						            }
 						            // injection du seuil minimum (dernier ?)
 						            pstRecette.setInt(nb_aliment + 1, seuilMinimum);
@@ -207,9 +208,10 @@ public class Main {
 						                    pst3.setInt(1, idsRecettes.get(id_select));
 
 						                    try (ResultSet rs = pst3.executeQuery()) {
+						                    	Recette recette = new Recette(id_select, rs.getString("nom"));
 						                    	if (rs.next()) {
 						                            System.out.println("\n╔══════════════════════════════════════╗");
-						                            System.out.println("  " + rs.getString("nom"));
+						                            System.out.println("  " + recette.getNom());
 						                            System.out.println("╚══════════════════════════════════════╝");
 						                            System.out.println("📝 Description   : " + rs.getString("description"));
 						                            System.out.println("⏱ Temps de prépa : " + rs.getString("temps_preparation") + " minutes");
